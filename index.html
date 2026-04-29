@@ -1,26 +1,241 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard Pokémon</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reporte Pokémon | Big Data II</title>
     <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-            background-color: #f5f5f5;
-        }
-        img {
-            width: 60%;
-            margin-top: 20px;
-        }
+      :root {
+        --primary: #ee1515; /* Rojo Pokémon */
+        --secondary: #222222;
+        --bg: #f4f4f9;
+        --card-bg: #ffffff;
+        --text: #333;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: var(--primary);
+        color: white;
+        padding: 2rem 1rem;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      header p {
+        margin-top: 0.5rem;
+        opacity: 0.9;
+        font-weight: 300;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+      }
+
+      .intro {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        border-left: 5px solid var(--primary);
+      }
+
+      .grid-visualizaciones {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      section.card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card-content {
+        padding: 2rem;
+      }
+
+      .card h3 {
+        margin-top: 0;
+        color: var(--secondary);
+        border-bottom: 2px solid #eee;
+        padding-bottom: 0.5rem;
+        font-size: 1.5rem;
+      }
+
+      .card p {
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      .img-container {
+        background: #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+      }
+
+      .badge {
+        display: inline-block;
+        background: #e1e1e1;
+        padding: 0.2rem 0.6rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+        color: #555;
+      }
+
+      footer {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: #888;
+        font-size: 0.8rem;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <header>
+      <h1>Análisis de Datos Pokémon</h1>
+      <p>
+        Tecnicatura Superior en Desarrollo de Software Multiplataforma | Big
+        Data II
+      </p>
+    </header>
 
-    <h1>Dashboard de Pokémon</h1>
-    <h2>Cantidad de Pokémon por Generación</h2>
+    <div class="container">
+      <div class="intro">
+        <h2>Objetivo del Proyecto</h2>
+        <p>
+          Procesamiento y visualización del dataset
+          <strong>Pokémon Complete 2025</strong>. Este reporte analiza
+          tendencias generacionales, distribución de poder y complejidad
+          taxonómica mediante el uso de Python, Pandas y Seaborn.
+        </p>
+      </div>
 
-    <img src="grafico.png" alt="Gráfico de Pokémon">
+      <div class="grid-visualizaciones">
+        <!-- 1. Distribución de Poder -->
+        <section class="card">
+          <div class="card-content">
+            <span class="badge">Univariado</span>
+            <h3>Distribución del Poder Total</h3>
+            <p>
+              Análisis de la frecuencia y concentración del poder estadístico.
+              El histograma revela un pico claro entre 300 y 350 puntos base.
+            </p>
+          </div>
+          <div class="img-container">
+            <img src="histograma_poder.png" alt="Histograma de Poder" />
+          </div>
+        </section>
 
-</body>
+        <!-- 2. Cantidad por Generación -->
+        <section class="card">
+          <div class="card-content">
+            <span class="badge">Categórico</span>
+            <h3>Producción por Generación</h3>
+            <p>
+              Comparación del volumen de nuevos Pokémon. Se observa que la
+              Generación 5 lidera en cantidad, mientras que la 6 presenta el
+              volumen más bajo.
+            </p>
+          </div>
+          <div class="img-container">
+            <img
+              src="grafico_generaciones.png"
+              alt="Gráfico de Barras Generaciones"
+            />
+          </div>
+        </section>
+
+        <!-- 3. Power Creep -->
+        <section class="card">
+          <div class="card-content">
+            <span class="badge">Tendencia</span>
+            <h3>Evolución del Poder Promedio</h3>
+            <p>
+              Evidencia del fenómeno 'Power Creep'. Se observa una escala
+              estadística sostenida desde la Generación 1 hasta la 9.
+            </p>
+          </div>
+          <div class="img-container">
+            <img
+              src="promedio_poder_generacion.png"
+              alt="Gráfico de Power Creep"
+            />
+          </div>
+        </section>
+
+        <!-- 4. Tipos Único vs Dual -->
+        <section class="card">
+          <div class="card-content">
+            <span class="badge">Evolutivo</span>
+            <h3>Complejidad Taxonómica</h3>
+            <p>
+              Proporción de Pokémon de tipo único frente a tipo dual. El
+              análisis por barras apiladas permite ver la estabilidad de esta
+              relación a través del tiempo.
+            </p>
+          </div>
+          <div class="img-container">
+            <img
+              src="barras_apiladas_tipos.png"
+              alt="Gráfico de Barras Apiladas"
+            />
+          </div>
+        </section>
+
+        <!-- 5. Heatmap de Tipos -->
+        <section class="card">
+          <div class="card-content">
+            <span class="badge">Multidimensional</span>
+            <h3>Matriz de Combinaciones de Tipos</h3>
+            <p>
+              Mapa de calor que revela densidades y vacíos en las combinaciones
+              elementales. Identifica patrones estructurales de diseño en el
+              dataset.
+            </p>
+          </div>
+          <div class="img-container">
+            <img src="heatmap_tipos.png" alt="Heatmap de Tipos" />
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        Trabajo Práctico N.º 1 — 2026<br />Big Data II | Desarrollo de Software
+      </p>
+    </footer>
+  </body>
 </html>
